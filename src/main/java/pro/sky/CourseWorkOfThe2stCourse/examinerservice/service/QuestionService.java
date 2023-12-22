@@ -12,6 +12,4 @@ public interface QuestionService {
     Collection<Question> getAll();
     Question getRandomQuestion();
 
-
-
 }
