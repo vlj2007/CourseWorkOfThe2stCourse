@@ -1,4 +1,4 @@
-package pro.sky.CourseWorkOfThe2stCourse.examinerservice.service;
+package pro.sky.courseworkofthe2stcourse.examinerservice.service;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.junit.jupiter.MockitoExtension;
-import pro.sky.CourseWorkOfThe2stCourse.examinerservice.domain.Question;
+import pro.sky.courseworkofthe2stcourse.examinerservice.domain.Question;
 
 import java.util.stream.Stream;
 
@@ -18,10 +18,10 @@ class JavaQuestionServiceTest {
 
     private static Stream<Arguments> provideParamsForTest() {
         return Stream.of(
-                Arguments.of("question", "answer"),
-                Arguments.of("question1", "answer1"),
-                Arguments.of("question2", "answer2"),
-                Arguments.of("question3", "answer3")
+                Arguments.of("Pull request", "запрос на слияние (иногда называется merge request) двух веток"),
+                Arguments.of("Commit", "запись в истории изменений, которая содержит commit message (описание внесенных изменений), а также обновленные файлы, подвергшиеся изменениям."),
+                Arguments.of("Цикл", "конструкция кода, которая повторяет одно и то же действие несколько (столько, сколько нам потребуется) раз."),
+                Arguments.of("Инициализация", "присваивание какого-то значения переменной.")
         );
     }
 

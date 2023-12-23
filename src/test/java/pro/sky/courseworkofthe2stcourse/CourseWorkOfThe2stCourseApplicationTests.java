@@ -1,4 +1,4 @@
-package pro.sky.CourseWorkOfThe2stCourse;
+package pro.sky.courseworkofthe2stcourse;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

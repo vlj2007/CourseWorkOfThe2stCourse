@@ -1,4 +1,4 @@
-package pro.sky.CourseWorkOfThe2stCourse.examinerservice.domain;
+package pro.sky.courseworkofthe2stcourse.examinerservice.domain;
 
 import java.util.Objects;
 

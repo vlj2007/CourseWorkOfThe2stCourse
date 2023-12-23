@@ -1,21 +1,21 @@
-package pro.sky.CourseWorkOfThe2stCourse.examinerservice.controller;
+package pro.sky.courseworkofthe2stcourse.examinerservice.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import pro.sky.CourseWorkOfThe2stCourse.examinerservice.domain.Question;
-import pro.sky.CourseWorkOfThe2stCourse.examinerservice.service.QuestionService;
+import pro.sky.courseworkofthe2stcourse.examinerservice.domain.Question;
+import pro.sky.courseworkofthe2stcourse.examinerservice.service.QuestionService;
 
 import java.util.Collection;
 
 @RestController
 @RequestMapping("/exam")
 
-public class JavaController {
+public class JavaQuestionController {
     QuestionService service;
 
-    public JavaController(QuestionService service) {
+    public JavaQuestionController(QuestionService service) {
         this.service = service;
     }
 

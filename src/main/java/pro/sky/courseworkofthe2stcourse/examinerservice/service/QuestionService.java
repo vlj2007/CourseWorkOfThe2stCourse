@@ -1,6 +1,6 @@
-package pro.sky.CourseWorkOfThe2stCourse.examinerservice.service;
+package pro.sky.courseworkofthe2stcourse.examinerservice.service;
 
-import pro.sky.CourseWorkOfThe2stCourse.examinerservice.domain.Question;
+import pro.sky.courseworkofthe2stcourse.examinerservice.domain.Question;
 
 import java.util.Collection;
 

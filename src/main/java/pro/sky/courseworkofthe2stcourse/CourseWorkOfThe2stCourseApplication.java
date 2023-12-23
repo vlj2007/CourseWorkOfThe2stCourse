@@ -1,4 +1,4 @@
-package pro.sky.CourseWorkOfThe2stCourse;
+package pro.sky.courseworkofthe2stcourse;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
