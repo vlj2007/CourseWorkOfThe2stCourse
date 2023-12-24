@@ -1,5 +1,6 @@
 package pro.sky.courseworkofthe2stcourse.examinerservice.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -10,6 +11,7 @@ import pro.sky.courseworkofthe2stcourse.examinerservice.service.QuestionService;
 import java.util.Collection;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/exam")
 
 public class JavaQuestionController {

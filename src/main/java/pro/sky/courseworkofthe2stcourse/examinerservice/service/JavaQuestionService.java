@@ -1,7 +1,10 @@
 package pro.sky.courseworkofthe2stcourse.examinerservice.service;
+
 import org.springframework.stereotype.Service;
 import pro.sky.courseworkofthe2stcourse.examinerservice.domain.Question;
 import pro.sky.courseworkofthe2stcourse.examinerservice.exception.ListQuestionIsEmptyException;
+import pro.sky.courseworkofthe2stcourse.examinerservice.exception.IllegelArgumentException;
+import pro.sky.courseworkofthe2stcourse.examinerservice.exception.QuestionNotFound;
 
 import java.util.*;
 
@@ -28,19 +31,30 @@ public class JavaQuestionService implements QuestionService {
 
     @Override
     public Question add(String question, String answer) {
-        return add(new Question(question, answer));
+        Question q = new Question(question, answer);
+        if (questions.contains(q)) {
+            throw new IllegelArgumentException("Вопрос существует в списке");
+        }
+        questions.add(q);
+        return q;
     }
 
     @Override
     public Question add(Question question) {
+        if (questions.contains(question)) {
+            throw new IllegelArgumentException("Вопрос существует в списке");
+        }
         questions.add(question);
         return question;
     }
 
     @Override
     public Question remove(Question question) {
-        questions.remove(question);
-        return question;
+        if(questions.remove(question)){
+            return question;
+        }
+        throw  new QuestionNotFound("Элемент не найден в спискен");
+
     }
 
     @Override
@@ -48,12 +62,15 @@ public class JavaQuestionService implements QuestionService {
         return questions;
     }
 
+    @Override
     public void clear() {
         questions.clear();
     }
 
-    public void size() {
-        int resultSize = questions.size();
+
+    @Override
+    public int size() {
+        return questions.size();
     }
 
 

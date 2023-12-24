@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pro.sky.courseworkofthe2stcourse.examinerservice.domain.Question;
 
+import java.util.Collection;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -32,8 +33,11 @@ class JavaQuestionServiceTest {
         assertTrue(serviceTest.getAll().contains(new Question(question, answer)));
     }
 
-    @Test
-    void testAdd() {
+    @ParameterizedTest
+    @MethodSource("provideParamsForTest")
+    void testAdd(Question question) {
+        serviceTest.add(question);
+        assertEquals(serviceTest.getAll().contains(Question));
     }
 
     @ParameterizedTest
