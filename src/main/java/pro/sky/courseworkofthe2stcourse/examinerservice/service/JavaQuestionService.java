@@ -2,15 +2,16 @@ package pro.sky.courseworkofthe2stcourse.examinerservice.service;
 
 import org.springframework.stereotype.Service;
 import pro.sky.courseworkofthe2stcourse.examinerservice.domain.Question;
+import pro.sky.courseworkofthe2stcourse.examinerservice.exception.IncorrectAmountQuestionException;
 import pro.sky.courseworkofthe2stcourse.examinerservice.exception.ListQuestionIsEmptyException;
-import pro.sky.courseworkofthe2stcourse.examinerservice.exception.IllegelArgumentException;
+import pro.sky.courseworkofthe2stcourse.examinerservice.exception.IllegalArgumentException;
 import pro.sky.courseworkofthe2stcourse.examinerservice.exception.QuestionNotFound;
+
 
 import java.util.*;
 
 @Service
 public class JavaQuestionService implements QuestionService {
-    Random random = new Random();
 
     private Set<Question> questions = new HashSet<>(Set.of(
             new Question("Pull request", "запрос на слияние (иногда называется merge request) двух веток"),
@@ -33,7 +34,7 @@ public class JavaQuestionService implements QuestionService {
     public Question add(String question, String answer) {
         Question q = new Question(question, answer);
         if (questions.contains(q)) {
-            throw new IllegelArgumentException("Вопрос существует в списке");
+            throw new IllegalArgumentException("Вопрос существует в списке");
         }
         questions.add(q);
         return q;
@@ -42,7 +43,7 @@ public class JavaQuestionService implements QuestionService {
     @Override
     public Question add(Question question) {
         if (questions.contains(question)) {
-            throw new IllegelArgumentException("Вопрос существует в списке");
+            throw new IllegalArgumentException("Вопрос существует в списке");
         }
         questions.add(question);
         return question;
@@ -50,23 +51,22 @@ public class JavaQuestionService implements QuestionService {
 
     @Override
     public Question remove(Question question) {
-        if(questions.remove(question)){
+        if (questions.remove(question)) {
             return question;
         }
-        throw  new QuestionNotFound("Элемент не найден в спискен");
+        throw new QuestionNotFound("Элемент не найден в спискен");
 
     }
 
     @Override
     public Collection<Question> getAll() {
-        return questions;
+        return Collections.unmodifiableSet(questions);
     }
 
     @Override
     public void clear() {
         questions.clear();
     }
-
 
     @Override
     public int size() {
@@ -75,12 +75,21 @@ public class JavaQuestionService implements QuestionService {
 
 
     @Override
+    public Question find(String question) {
+        return questions.stream()
+                .filter(e -> e.getQuestion().equals(questions))
+                .findFirst()
+                .orElseThrow(QuestionNotFound::new);
+//        return null;
+    }
+
+    @Override
     public Question getRandomQuestion() {
+        Random random = new Random();
         if (questions.isEmpty()) {
             throw new ListQuestionIsEmptyException("Вопросы отсутствуют в списке");
         }
         return new ArrayList<>(questions).get(random.nextInt(questions.size()));
-
     }
 
 

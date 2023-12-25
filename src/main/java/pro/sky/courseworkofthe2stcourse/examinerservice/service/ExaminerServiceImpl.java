@@ -12,17 +12,17 @@ import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
-public class ExaminerServiceImpl implements  ExaminerService{
+public class ExaminerServiceImpl implements ExaminerService {
     private Random random;
-    private final QuestionService questionService;
+    public QuestionService questionService;
 
     @Override
-    public Collection<Question> getQuestions(int amount) {
-        if (amount <= 0 || amount > questionService.size()){
+    public Set<Question> getQuestions(int amount) {
+        if (amount > questionService.size()) {
             throw new IncorrectAmountQuestionException("Список не содержить столько вопросов");
         }
 
-        Collection<Question> resultQuestions = new HashSet<>();
+        Set<Question> resultQuestions = new HashSet<>();
         while (resultQuestions.size() < amount) {
             resultQuestions.add(questionService.getRandomQuestion());
         }
