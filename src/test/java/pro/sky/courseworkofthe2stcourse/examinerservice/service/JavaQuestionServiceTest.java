@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pro.sky.courseworkofthe2stcourse.examinerservice.domain.Question;
 import pro.sky.courseworkofthe2stcourse.examinerservice.exception.IllegalArgumentException;
-import pro.sky.courseworkofthe2stcourse.examinerservice.exception.QuestionNotFound;
+import pro.sky.courseworkofthe2stcourse.examinerservice.exception.QuestionNotFoundException;
 
 import java.util.stream.Stream;
 
@@ -44,7 +44,7 @@ class JavaQuestionServiceTest {
     @Test
     void findNegativeTest() {
         serviceTest.add("Вопрос3", "Ответ3");
-        assertThrows(QuestionNotFound.class,
+        assertThrows(QuestionNotFoundException.class,
                 () -> serviceTest.find("Вопрос4")
         );
     }
@@ -52,7 +52,7 @@ class JavaQuestionServiceTest {
     @Test
     void findPositiveTest() {
         serviceTest.add("Вопрос3", "Ответ3");
-        assertThrows(QuestionNotFound.class,
+        assertThrows(QuestionNotFoundException.class,
                 () -> serviceTest.find("Вопрос3")
         );
     }
@@ -74,7 +74,7 @@ class JavaQuestionServiceTest {
         serviceTest.add("Spring Boot", "фреймворка");
         Question question1 = new Question("Spring Boot", "фреймворка");
         assertEquals(serviceTest.remove(question1), question1);
-        assertThrows(QuestionNotFound.class, () -> serviceTest.find(question));
+        assertThrows(QuestionNotFoundException.class, () -> serviceTest.find(question));
     }
 
     @Test

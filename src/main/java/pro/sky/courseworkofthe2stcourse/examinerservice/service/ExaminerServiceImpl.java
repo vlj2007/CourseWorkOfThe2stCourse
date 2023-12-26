@@ -13,8 +13,8 @@ import java.util.Set;
 @Service
 @RequiredArgsConstructor
 public class ExaminerServiceImpl implements ExaminerService {
-    private Random random;
-    public QuestionService questionService;
+    private final Random random = new Random();
+    private final QuestionService questionService;
 
     @Override
     public Set<Question> getQuestions(int amount) {

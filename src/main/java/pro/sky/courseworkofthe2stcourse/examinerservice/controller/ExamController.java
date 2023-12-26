@@ -12,7 +12,7 @@ import pro.sky.courseworkofthe2stcourse.examinerservice.service.ExaminerService;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/get")
+@RequestMapping("/exam")
 public class ExamController {
 
     private final ExaminerService examinerService;
@@ -21,7 +21,7 @@ public class ExamController {
         this.examinerService = examinerService;
     }
 
-    @GetMapping(path = "{amount}")
+    @GetMapping("/get/{amount}")
     public Collection<Question> getQuestions(@PathVariable int amount) {
         return examinerService.getQuestions(amount);
     }

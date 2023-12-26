@@ -13,11 +13,10 @@ import pro.sky.courseworkofthe2stcourse.examinerservice.service.QuestionService;
 import java.util.Collection;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/exam")
 
 public class JavaQuestionController {
-    QuestionService service;
+    private final QuestionService service;
 
     public JavaQuestionController(QuestionService service) {
         this.service = service;
