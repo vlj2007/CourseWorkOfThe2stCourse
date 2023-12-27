@@ -65,16 +65,15 @@ class JavaQuestionServiceTest {
     void findNegativeTest() {
         serviceTest.add("Вопрос3", "Ответ3");
         assertThrows(QuestionNotFoundException.class,
-                () -> serviceTest.find("Вопрос4")
+                () -> serviceTest.find("Вопрос2")
         );
     }
 
     @Test
     void findPositiveTest() {
         serviceTest.add("Вопрос3", "Ответ3");
-        assertThrows(QuestionNotFoundException.class,
-                () -> serviceTest.find("Вопрос3")
-        );
+        Question q1 = new Question("Вопрос3", "Ответ3");
+        assertEquals(q1, serviceTest.find("Вопрос3"));
     }
 
 
