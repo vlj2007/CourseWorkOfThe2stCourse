@@ -34,12 +34,32 @@ class JavaQuestionServiceTest {
         );
     }
 
+
+    private static Stream<Arguments> provideParamsForTestTwo() {
+        return Stream.of(
+                Arguments.of(new Question ("Pull request", "запрос на слияние (иногда называется merge request) двух веток")),
+                Arguments.of(new Question ("Commit", "запись в истории изменений, которая содержит commit message (описание внесенных изменений), а также обновленные файлы, подвергшиеся изменениям.")),
+                Arguments.of(new Question ("Цикл", "конструкция кода, которая повторяет одно и то же действие несколько (столько, сколько нам потребуется) раз.")),
+                Arguments.of(new Question ("Инициализация", "присваивание какого-то значения переменной."))
+        );
+    }
+
     @ParameterizedTest
     @MethodSource("provideParamsForTest")
     void add(String question, String answer) {
         serviceTest.add("Spring Boot", "фреймворка");
         assertTrue(serviceTest.getAll().contains(new Question("Spring Boot", "фреймворка")));
     }
+
+
+    @ParameterizedTest
+    @MethodSource("provideParamsForTestTwo")
+    void add4(Question question) {
+        serviceTest.add("Spring Boot", "фреймворка");
+        assertFalse(serviceTest.getAll().contains(question));
+    }
+
+
 
     @Test
     void findNegativeTest() {

@@ -13,7 +13,7 @@ import pro.sky.courseworkofthe2stcourse.examinerservice.service.QuestionService;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/exam")
+@RequestMapping("/exam/java")
 
 public class JavaQuestionController {
     private final QuestionService service;
@@ -22,16 +22,16 @@ public class JavaQuestionController {
         this.service = service;
     }
 
-    @GetMapping(path = "/java/add")
+    @GetMapping(path = "/add")
     public Question addQuestion(@RequestParam String question, @RequestParam String answer){
         return service.add(question, answer);
     }
 
-    @GetMapping(path = "/java/find")
+    @GetMapping(path = "/find")
     public Collection<Question> getQuestions(){
         return service.getAll();
     }
-    @GetMapping(path = "/java/remove")
+    @GetMapping(path = "/remove")
     public Question removeQuestion(@RequestParam  Question question){
         return  service.remove(question);
     }
