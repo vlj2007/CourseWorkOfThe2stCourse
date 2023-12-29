@@ -37,10 +37,10 @@ class JavaQuestionServiceTest {
 
     private static Stream<Arguments> provideParamsForTestTwo() {
         return Stream.of(
-                Arguments.of(new Question ("Pull request", "запрос на слияние (иногда называется merge request) двух веток")),
-                Arguments.of(new Question ("Commit", "запись в истории изменений, которая содержит commit message (описание внесенных изменений), а также обновленные файлы, подвергшиеся изменениям.")),
-                Arguments.of(new Question ("Цикл", "конструкция кода, которая повторяет одно и то же действие несколько (столько, сколько нам потребуется) раз.")),
-                Arguments.of(new Question ("Инициализация", "присваивание какого-то значения переменной."))
+                Arguments.of(new Question("Pull request", "запрос на слияние (иногда называется merge request) двух веток")),
+                Arguments.of(new Question("Commit", "запись в истории изменений, которая содержит commit message (описание внесенных изменений), а также обновленные файлы, подвергшиеся изменениям.")),
+                Arguments.of(new Question("Цикл", "конструкция кода, которая повторяет одно и то же действие несколько (столько, сколько нам потребуется) раз.")),
+                Arguments.of(new Question("Инициализация", "присваивание какого-то значения переменной."))
         );
     }
 
@@ -58,7 +58,6 @@ class JavaQuestionServiceTest {
         serviceTest.add("Spring Boot", "фреймворка");
         assertFalse(serviceTest.getAll().contains(question));
     }
-
 
 
     @Test
@@ -98,8 +97,15 @@ class JavaQuestionServiceTest {
 
     @Test
     void getRandomQuestion() {
+        serviceTest.add(new Question("Pull request", "запрос на слияние (иногда называется merge request) двух веток"));
+        serviceTest.add(new Question("Commit", "запись в истории изменений, которая содержит commit message (описание внесенных изменений), а также обновленные файлы, подвергшиеся изменениям."));
+        serviceTest.add(new Question("Цикл", "конструкция кода, которая повторяет одно и то же действие несколько (столько, сколько нам потребуется) раз."));
+        serviceTest.add(new Question("Инициализация", "присваивание какого-то значения переменной."));
         for (int i = 0; i < 10; i++) {
             Assertions.assertThat(serviceTest.getAll()).contains(serviceTest.getRandomQuestion());
         }
+
     }
+
+
 }
